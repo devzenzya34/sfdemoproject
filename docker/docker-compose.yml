@@ -1,0 +1,32 @@
+version: "3.9"
+services:
+
+  db_starter:
+    image: mysql
+    container_name: db_starterpro
+    restart: always
+    volumes:
+      - db-data:/var/lib/mysql
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    networks:
+      - dev
+
+  #service build php et les extensions définis dans le Dockerfile
+  www:
+    build: php
+    container_name: www_docker_starter
+    ports:
+      - "8080:80"
+    volumes:
+      - ./php/vhosts:/etc/apache2/sites-enabled
+      - ../:/var/www
+    restart: always
+    networks:
+      - dev
+
+networks:
+  dev:
+
+volumes:
+  db-data:
