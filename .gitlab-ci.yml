@@ -20,10 +20,10 @@ stages:
     - UnitTests
 
 #Run de phases de Tests
-security-checker:
-    stage: SecurityChecker
+local-php-security-checker:
+    stage: LocalPhpSecurityChecker
     script:
-        - security-checker security:check composer.lock
+        - local-php-security-checker --path=/path/to/composer.lock
     allow_failure: false
 
 phpcs:
