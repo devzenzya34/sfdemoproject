@@ -23,7 +23,7 @@ stages:
 local-php-security-checker:
     stage: LocalPhpSecurityChecker
     script:
-        - local-php-security-checker --path=/path/to/composer.lock
+        - local-php-security-checker security:check composer.lock
     allow_failure: false
 
 phpcs:
