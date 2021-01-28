@@ -2,7 +2,7 @@
 <project version="4">
   <component name="PipelineViewerConfig">
     <option name="gitlabAuthToken" value="xBFmpqXh94LKLqLa8eHN" />
-    <option name="gitlabProjectId" value="0" />
+    <option name="gitlabProjectId" value="23243007" />
     <option name="gitlabUrl" value="https://gitlab.com" />
     <option name="showLightsForBranch" value="" />
   </component>
