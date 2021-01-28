@@ -1,0 +1,45 @@
+image: jakzal/phpqa:php7.4
+
+before_script:
+    - composer install #instal le composer avant le lancement du script et mis en cache du dossier vendor
+
+cache:
+    paths:
+        - vendor/
+
+#les bundles que l'ont va utiliser su paquet pour nos tests suivant les étapes de tests
+stages:
+    - SecurityChecker
+    - CodingStandards
+    - UnitTests
+
+#Run de phases de Tests
+security-checker:
+    stage: SecurityChecker
+    script:
+        - security-checker security:check composer.lock
+    allow_failure: false
+
+phpcs:
+    stage: CodingStandards
+    script:
+        - phpcs -v --standard=PSR12 --ignore=./src/Kernel.php ./src
+    allow_failure: false
+
+phpstan:
+    stage: CodingStandards
+    script:
+        - phpstan analyse ./src
+    allow_failure: false
+
+twig-lint:
+    stage: CodingStandards
+    script:
+        - twig-lint lint ./templates
+    allow_failure: false
+# dernière étape des tests statiques
+phpunit:
+    stage: UnitTests
+    script:
+        - php bin/phpunit
+    allow_failure: false
