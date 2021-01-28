@@ -1,11 +1,17 @@
 image: jakzal/phpqa:php7.4
 
+cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+        - vendor/
+
 before_script:
     - composer install #instal le composer avant le lancement du script et mis en cache du dossier vendor
 
-cache:
-    paths:
-        - vendor/
+#cache:
+#    key: ${CI_COMMIT_REF_SLUG}
+#    paths:
+#        - vendor/
 
 #les bundles que l'ont va utiliser su paquet pour nos tests suivant les étapes de tests
 stages:
