@@ -15,7 +15,7 @@ before_script:
 
 #les bundles que l'ont va utiliser su paquet pour nos tests suivant les étapes de tests
 stages:
-    - SecurityChecker
+    - LocalPhpSecurityChecker
     - CodingStandards
     - UnitTests
 
