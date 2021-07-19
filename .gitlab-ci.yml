@@ -29,7 +29,7 @@ local-php-security-checker:
 phpcs:
     stage: CodingStandards
     script:
-        - phpcs -v --standard=PSR12 --ignore=./src/Kernel.php ./src
+        - phpcs -v --standard=PSR2 --ignore=./src/Kernel.php ./src
     allow_failure: false
 
 phpstan:
